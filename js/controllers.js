@@ -23,7 +23,7 @@ angular.module('MeasPoints.controllers', [])
     $scope.logout = function(){
         $.ajax({
             type: "GET",
-            url: "http://110.174.118.24:8001/sap/public/bc/icf/logoff", //Clear SSO cookies: SAP Provided service to do that 
+            url: "http://[Host IP]:[Port]/sap/public/bc/icf/logoff", //Clear SSO cookies: SAP Provided service to do that 
         }).done(function(data) { //Now clear the authentication header stored in the browser 
             console.log("logout");
             $state.go('app.login');
@@ -32,7 +32,7 @@ angular.module('MeasPoints.controllers', [])
                 //console.log("if");
                 $.ajax({
                     type: "GET",
-                    url: "http://110.174.118.24:8001/sap/opu/odata/sap/ZMPOINT4_SRV/MeasPoints", //any URL to a Gateway service 
+                    url: "http://[Host IP]:[Port]/sap/opu/odata/sap/ZMPOINT4_SRV/MeasPoints", //any URL to a Gateway service 
                     username: 'dummy', //dummy credentials: when request fails, will clear the authentication header 
                     password: 'dummy',
                     statusCode: {
@@ -88,7 +88,7 @@ angular.module('MeasPoints.controllers', [])
         // create basic auth for SAP with user and pwd
         var auth = basicAuth.makeBasicAuth($scope.loginData.user, $scope.loginData.pwd);
         // GW URL used for login
-        var url = "http://110.174.118.24:8001/sap/opu/odata/sap/ZMPOINT4_SRV/UserDetailSet(Username='" + $scope.loginData.user + "')?$format=json";
+        var url = "http://[Host IP]:[Port]/sap/opu/odata/sap/ZMPOINT4_SRV/UserDetailSet(Username='" + $scope.loginData.user + "')?$format=json";
         // execute http GET request
         OData.request
         ({
@@ -181,9 +181,9 @@ angular.module('MeasPoints.controllers', [])
             console.log($scope.search.val);
             console.log(isNaN($scope.search.val));
             if(isNaN($scope.search.val) == true){ //not a number
-                var url = "http://110.174.118.24:8001/sap/opu/odata/sap/ZMPOINT4_SRV/MeasPoints?$filter=substring(Pttxt, 0, " + len +") eq '" + val + "'";    
+                var url = "http://[Host IP]:[Port]/sap/opu/odata/sap/ZMPOINT4_SRV/MeasPoints?$filter=substring(Pttxt, 0, " + len +") eq '" + val + "'";    
             }else{ //it is a number
-                var url = "http://110.174.118.24:8001/sap/opu/odata/sap/ZMPOINT4_SRV/MeasPoints?$filter=substring(Point, 0, " + len +") eq '" + val + "'";
+                var url = "http://[Host IP]:[Port]/sap/opu/odata/sap/ZMPOINT4_SRV/MeasPoints?$filter=substring(Point, 0, " + len +") eq '" + val + "'";
             };
             
             console.log(url);
@@ -203,7 +203,7 @@ angular.module('MeasPoints.controllers', [])
             template: '<ion-spinner></ion-spinner> Loading...'
         });
         var auth = basicAuth.getMytoken();
-        var url = "http://110.174.118.24:8001/sap/opu/odata/sap/ZMPOINT4_SRV/MeasPoints?$format=json";
+        var url = "http://[Host IP]:[Port]/sap/opu/odata/sap/ZMPOINT4_SRV/MeasPoints?$format=json";
         $http({
                 method: 'GET',
                 url: url,
@@ -315,7 +315,7 @@ angular.module('MeasPoints.controllers', [])
         $ionicLoading.show({
             template: '<ion-spinner></ion-spinner> Loading...'
         });
-        var url = "http://110.174.118.24:8001/sap/opu/odata/sap/ZMPOINT4_SRV/MeasDocSet(Point='" + point + "')?$format=json";
+        var url = "http://[Host IP]:[Port]/sap/opu/odata/sap/ZMPOINT4_SRV/MeasDocSet(Point='" + point + "')?$format=json";
          $http({
                 method: 'GET',
                 url: url,
@@ -400,7 +400,7 @@ angular.module('MeasPoints.controllers', [])
     
     // get and store last measurement doc. values from server of a given point
     function getLastValues(point){
-        var url = "http://110.174.118.24:8001/sap/opu/odata/sap/ZMPOINT4_SRV/MeasDocSet(Point='" + point + "')?$format=json";
+        var url = "http://[Host IP]:[Port]/sap/opu/odata/sap/ZMPOINT4_SRV/MeasDocSet(Point='" + point + "')?$format=json";
          $http({
                 method: 'GET',
                 url: url,
@@ -457,7 +457,7 @@ angular.module('MeasPoints.controllers', [])
     // create meas. doc
     $scope.createMeasDoc = function(){
         //console.log("creating measdoc..");
-        var url = "http://110.174.118.24:8001/sap/opu/odata/sap/ZMPOINT4_SRV/MeasDocSet";
+        var url = "http://[Host IP]:[Port]/sap/opu/odata/sap/ZMPOINT4_SRV/MeasDocSet";
         
         // get X-CSRF-Token
         header_xcsrf_token = basicAuth.getXCSRF_Token(); 
@@ -601,7 +601,7 @@ angular.module('MeasPoints.controllers', [])
         if(len > 0){
             //console.log($scope.search.val);
             //console.log(isNaN($scope.search.val));
-            var url = "http://110.174.118.24:8001/sap/opu/odata/sap/ZMPOINT4_SRV/MeasPoints?$filter=substring(Pttxt, 0, " + len +") eq '" + val + "'";    
+            var url = "http://[Host IP]:[Port]/sap/opu/odata/sap/ZMPOINT4_SRV/MeasPoints?$filter=substring(Pttxt, 0, " + len +") eq '" + val + "'";    
             //console.log(url);
             measPointFactory.getPoints(url).then(function(data){
                 //console.log("meas pos doc:");
@@ -661,7 +661,7 @@ angular.module('MeasPoints.controllers', [])
     
     //get default user details
     var user = login.getUser();
-    var url = "http://110.174.118.24:8001/sap/opu/odata/sap/ZMPOINT4_SRV/UserDetailSet(Username='" + user + "')?$format=json";
+    var url = "http://[Host IP]:[Port]/sap/opu/odata/sap/ZMPOINT4_SRV/UserDetailSet(Username='" + user + "')?$format=json";
     userDetailFactory.getUserDetails(url).then(function(data){ 
         console.log("data:");
         console.log(data);
@@ -707,7 +707,7 @@ angular.module('MeasPoints.controllers', [])
     // Save user details on server
     $scope.saveUserDetails = function(){
         //console.log("creating measdoc..");
-        var url = "http://110.174.118.24:8001/sap/opu/odata/sap/ZMPOINT4_SRV/UserDetailSet";
+        var url = "http://[Host IP]:[Port]/sap/opu/odata/sap/ZMPOINT4_SRV/UserDetailSet";
         
         // get X-CSRF-Token
         header_xcsrf_token = basicAuth.getXCSRF_Token(); 
@@ -788,8 +788,8 @@ angular.module('MeasPoints.controllers', [])
   "d" : {
 
         "__metadata" : {
-          "id" : "http://110.174.118.24:8001/sap/opu/odata/sap/ZMPOINT4_SRV/TimeConfSet('')",
-          "uri" : "http://110.174.118.24:8001/sap/opu/odata/sap/ZMPOINT4_SRV/TimeConfSet('')",
+          "id" : "http://[Host IP]:[Port]/sap/opu/odata/sap/ZMPOINT4_SRV/TimeConfSet('')",
+          "uri" : "http://[Host IP]:[Port]/sap/opu/odata/sap/ZMPOINT4_SRV/TimeConfSet('')",
           "type" : "ZMPOINT4_SRV.TimeConf"
         },
         "Orderid" : "",
