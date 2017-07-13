@@ -50,7 +50,7 @@ angular.module('MeasPoints', ['ionic','ngCordova', 'MeasPoints.controllers', 'Me
         if(login.getLogout() == true){
             $.ajax({
                 type: "GET",
-                url: "http://110.174.118.24:8001/sap/public/bc/icf/logoff", //Clear SSO cookies: SAP Provided service to do that 
+                url: "http://[Host IP]:[Port]/sap/public/bc/icf/logoff", //Clear SSO cookies: SAP Provided service to do that 
             }).done(function(data) { //Now clear the authentication header stored in the browser 
                 console.log("done logoff");
                 //$state.go('app.login');
@@ -60,7 +60,7 @@ angular.module('MeasPoints', ['ionic','ngCordova', 'MeasPoints.controllers', 'Me
                     console.log("if");
                     $.ajax({
                         type: "GET",
-                        url: "http://110.174.118.24:8001/sap/opu/odata/sap/ZMPOINT4_SRV/MeasPoints", //any URL to a Gateway service 
+                        url: "http://[Host IP]:[Port]/sap/opu/odata/sap/ZMPOINT4_SRV/MeasPoints", //any URL to a Gateway service 
                         username: 'dummy', //dummy credentials: when request fails, will clear the authentication header 
                         password: 'dummy',
                         statusCode: {
