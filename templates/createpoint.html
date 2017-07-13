@@ -1,0 +1,70 @@
+<ion-view view-title="Create Measurement Doc.">
+    <ion-nav-bar class="bar-dark">
+      <ion-nav-back-button>
+      </ion-nav-back-button>
+    </ion-nav-bar>    
+  <ion-content>
+    
+      <div class="list">
+        <div class="item item-divider">Point Details</div>  
+        <label class="item item-input">
+            <label class="input-label">Point ID:</label>
+            <input type="text" ng-model="point.point" readonly>
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Description:</span>
+          <input type="text" ng-model="point.pttxt" readonly>
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Measuring Position:</span>
+          <input type="text" ng-model="point.psort" readonly>
+        </label>  
+        <label class="item">
+          <button class="button button-block button-positive" ng-click="addFavorite(point.point)">Add to Favorites</button>
+        </label>    
+       
+    <form ng-submit="createMeasDoc()">
+        <div class="item item-divider">Measurement Document Values</div>
+        <label class="item item-input row">  
+            <div class = "col col-20"></div>
+            <div class = "col col-40"><label class="input-label"><strong>New</strong></label></div>
+            <div class = "col col-40"><label class="input-label"><strong>Last</strong></label></div>
+            
+        </label> 
+        <label class="item item-input row">  
+            <div class = "col col-20"><label class="input-label">Value:</label></div>
+            <div class = "col col-40"><input type="number" step="0.01" ng-model="doc.readg2" placeholder="Type value..." required></div>
+            <div class = "col col-40"><input type="text" ng-model="doc.woob1" readonly></div>
+            <!-- <div class = "col col-40"><input type="text" ng-model="doc.readg" readonly></div> -->
+            
+        </label>    
+        <label class="item item-input row">
+            <div class = "col col-20"><label class="input-label">Date:</label></div>
+            <div class = "col col-40"><input id="d2" type="date" ng-model="doc.idate2" required></div>
+            <div class = "col col-40"><input id="d1" type="date" ng-model="doc.idate" readonly></div>
+                  
+        </label>
+        <label class="item item-input row">
+            <div class = "col col-20"><span class="input-label">Time:</span></div>
+            <div class = "col col-40"><input type="time" ng-model="doc.itime2" step="1" required></div> 
+            <div class = "col col-40"><input type="time" ng-model="doc.itime" readonly></div>
+               
+        </label>  
+        <label class="item item-input row">
+            <div class = "col col-20"><span class="input-label">Text:</span></div>
+            <div class = "col col-40"><input type="text" ng-model="doc.mdtxt2" required placeholder="Type value..."></div>  
+            <div class = "col col-40"><input type="text" ng-model="doc.mdtxt" readonly></div>
+              
+        </label>
+        <div class="item item-divider">Result</div>
+        <label class="item item-input">
+          <span class="input-label">Last Measurement Doc.:</span>
+          <input type="text" ng-model="doc.mdocm" readonly>
+        </label>  
+        <label class="item">
+          <button class="button button-block button-assertive" type="submit">Create</button>
+        </label>
+      </div>
+    </form>
+  </ion-content>
+</ion-view>

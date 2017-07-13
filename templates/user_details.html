@@ -1,0 +1,44 @@
+<ion-view view-title="User Details">
+    <ion-nav-bar class="bar-dark">
+      <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-navicon" menu-toggle="left" ng-hide="menu.hide">
+        </button>
+      </ion-nav-buttons>
+    </ion-nav-bar>   
+    
+    <ion-content>
+        <div class="card">
+        <div class="item">
+        <div class="list">
+            <form ng-submit="saveUserDetails()"> 
+                <div class="item item-divider">User Details</div>  
+                <label class="item item-input">
+                    <label class="input-label">User:</label>
+                    <input type="text" ng-model="user.Username" readonly>
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">Full name:</span>
+                    <input type="text" ng-model="user.Fullname" readonly>
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">Personnel Number:</span>
+                    <input type="number" step="1" ng-model="user.Pernr" required>
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">Maintenance Plant:</span>
+                    <input type="text" ng-model="user.Mplant" >
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">Work Centre:</span>
+                    <input type="text" ng-model="user.Wcentre" >
+                </label>
+             
+                <label class="item">
+                    <button class="button button-block button-assertive" type="submit">Save</button>
+                </label>
+            </form>
+        </div>
+            </div>
+            </div>
+    </ion-content>
+</ion-view>

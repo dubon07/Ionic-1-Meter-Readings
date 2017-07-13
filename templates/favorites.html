@@ -1,0 +1,28 @@
+<ion-view view-title="My Favorites">
+    <ion-nav-bar class="bar-dark">
+      <ion-nav-back-button>
+      </ion-nav-back-button>
+      <ion-nav-buttons side="secondary">
+        <div class="buttons">
+            <button class="button button-icon icon ion-ios-minus-outline"
+                    ng-click="toggleDelete()"></button>
+        </div>
+    </ion-nav-buttons>    
+    </ion-nav-bar>
+    
+  <ion-content>
+    <ion-list show-delete="shouldShowDelete">
+      <ion-item ng-repeat="point in measpoints" ng-click="goToCreateScreen(point.Point,point.Pttxt,point.Psort)" on-swipe-left="deleteFavorite(point.Point)">
+            <p><b>Point:</b> {{point.Point}}, <b>Description:</b> {{point.Pttxt}}, <b>Position:</b> {{point.Psort}}</p>
+            <ion-delete-button class="ion-minus-circled" ng-click="deleteFavorite(point.Point,$index)">
+            </ion-delete-button>
+      </ion-item>
+        
+      <!-- <ion-item ng-repeat="point in measpoints | favoriteFilter:favorites" ng-click="goToCreateScreen(point.Point,point.Pttxt,point.Psort)" on-swipe-left="deleteFavorite(point.Point)">
+            <p><b>Point:</b> {{point.Point}}, <b>Description:</b> {{point.Pttxt}}, <b>Position:</b> {{point.Psort}}</p>
+            <ion-delete-button class="ion-minus-circled" ng-click="deleteFavorite(point.Point)">
+            </ion-delete-button>
+      </ion-item> --> 
+    </ion-list>
+  </ion-content>
+</ion-view>

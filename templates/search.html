@@ -1,0 +1,38 @@
+
+<ion-view view-title="Measuring Points"> 
+  <ion-nav-bar class="bar-dark">
+      <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+        </button>
+      </ion-nav-buttons>
+    </ion-nav-bar>    
+  <ion-content>
+      
+          <label class="item item-input">
+              <span class="input-label">Search:</span>
+              <!-- <input type="text" placeholder="Search..." id="search" name="search"
+                     ng-model="searchVal"> -->
+              <input type="text" placeholder="Search..." id="search" name="search"
+                     ng-model="search.val"
+                     ng-model-options="{ debounce: 1000 }"
+                     ng-change="doLiveSearch()">
+          </label>
+       <!--    <input type="text" id="search2" name="search2"
+                 ng-model="search.val"
+                 ng-model-options="{ debounce: 1000 }"
+                 ng-change="doLiveSearch()"> -->
+          
+      <!--<label class="item">
+          <button class="button button-block button-dark" ng-click="logout()">Log-out</button>
+        </label> -->
+      <div class="item item-divider"><span style="font-size:75%">Swipe left to add to favorites</span></div>
+      <ion-list>
+          <ion-item ng-repeat="point in measpoints | filter: searchVal" ng-click="goToCreateScreen(point.Point,point.Pttxt,point.Psort)">
+              <p><b>Point:</b> {{point.Point}}, <b>Description:</b> {{point.Pttxt}}, <b>Position:</b> {{point.Psort}}</p>
+              <ion-option-button class="button-assertive icon ion-plus-circled"
+                                 ng-click="addFavorite(point.Point)">
+              </ion-option-button>
+          </ion-item>
+      </ion-list>
+  </ion-content>
+</ion-view>
