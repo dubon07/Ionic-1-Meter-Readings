@@ -207,7 +207,7 @@ angular.module('MeasPoints.services', [])
         $ionicLoading.show({
             template: '<ion-spinner></ion-spinner> Loading...'
         });
-        var url = "http://110.174.118.24:8001/sap/opu/odata/sap/ZMPOINT4_SRV/FavPointSet";
+        var url = "http://[Host IP]:[Port]/sap/opu/odata/sap/ZMPOINT4_SRV/FavPointSet";
         //create Fav JSON
         var favPoint = {
                         "d" : {
@@ -291,7 +291,7 @@ angular.module('MeasPoints.services', [])
         $ionicLoading.show({
             template: '<ion-spinner></ion-spinner> Loading...'
         });
-        var url = "http://110.174.118.24:8001/sap/opu/odata/sap/ZMPOINT4_SRV/FavPointSet(User='"+ user +"',Point='"+ point +"')";
+        var url = "http://[Host IP]:[Port]/sap/opu/odata/sap/ZMPOINT4_SRV/FavPointSet(User='"+ user +"',Point='"+ point +"')";
         //create Fav JSON
         var favPoint = {
                         "d" : {
@@ -362,7 +362,7 @@ angular.module('MeasPoints.services', [])
         $ionicLoading.show({
             template: '<ion-spinner></ion-spinner> Loading...'
         });
-        var url = "http://110.174.118.24:8001/sap/opu/odata/sap/ZMPOINT4_SRV/FavPointSet?$format=json";
+        var url = "http://[Host IP]:[Port]/sap/opu/odata/sap/ZMPOINT4_SRV/FavPointSet?$format=json";
         //favFac.measPoints = undefined;
         favFac.measPointsPromise = $http({
                 method: 'GET',
